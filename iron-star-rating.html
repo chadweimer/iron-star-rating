@@ -1,0 +1,36 @@
+<link rel="import" href="../polymer/polymer-element.html">
+
+<dom-module id="iron-star-rating">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>Hello [[prop1]]!</h2>
+  </template>
+
+  <script>
+    /**
+     * `iron-star-rating`
+     * 5-star rating element (Polymer 2.x)
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class IronStarRating extends Polymer.Element {
+      static get is() { return 'iron-star-rating'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'iron-star-rating'
+          }
+        };
+      }
+    }
+
+    window.customElements.define(IronStarRating.is, IronStarRating);
+  </script>
+</dom-module>
