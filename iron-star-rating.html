@@ -15,7 +15,7 @@
                 display: none !important;
             }
             iron-icon {
-                color: var(--paper-grey-200);
+                color: #eeeeee;
                 float: right;
             }
             iron-icon.whole {
@@ -38,11 +38,11 @@
             }
             iron-icon.active,
             iron-icon.active ~ iron-icon {
-                color: var(--paper-yellow-600);
+                color: #fdd835;
             }
             iron-icon:hover,
             iron-icon:hover ~ iron-icon {
-                color: var(--paper-yellow-500) !important;
+                color: #ffeb3b !important;
             }
         </style>
     
@@ -86,7 +86,7 @@
                 var self = this;
                 var stars = Polymer.dom(this.root).querySelectorAll('iron-icon');
                 stars.forEach(function(star) {
-                    self.listen(star, 'tap', '_starTapped');
+                    star.addEventListener('click', e => self._starClicked(e));
                 });
             }
 
@@ -104,9 +104,11 @@
                 });
             }
 
-            _starTapped(e) {
+            _starClicked(e) {
                 e.preventDefault();
-                this.fire('iron-star-rating-changed', {rating: e.target.dataset.rating,});
+
+                this.value = e.target.dataset.rating;
+                this.dispatchEvent(new CustomEvent('iron-star-rating-changed', {detail: {rating: this.value}}));
             }
         }
 
