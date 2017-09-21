@@ -1,4 +1,5 @@
 <link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../polymer/lib/mixins/gesture-event-listeners.html">
 <link rel="import" href="../iron-icon/iron-icon.html">
 <link rel="import" href="../iron-icons/iron-icons.html">
 
@@ -36,8 +37,8 @@
                         clip-path: inset(0 50% 0 0);
                 position: relative;
             }
-            iron-icon.active,
-            iron-icon.active ~ iron-icon {
+            iron-icon.selected,
+            iron-icon.selected ~ iron-icon {
                 color: #fdd835;
             }
             iron-icon:hover,
@@ -46,16 +47,9 @@
             }
         </style>
     
-        <iron-icon icon="icons:star" class="whole" data-rating="5"></iron-icon>
-        <iron-icon icon="icons:star" class="half" data-rating="4.5"></iron-icon>
-        <iron-icon icon="icons:star" class="whole" data-rating="4"></iron-icon>
-        <iron-icon icon="icons:star" class="half" data-rating="3.5"></iron-icon>
-        <iron-icon icon="icons:star" class="whole" data-rating="3"></iron-icon>
-        <iron-icon icon="icons:star" class="half" data-rating="2.5"></iron-icon>
-        <iron-icon icon="icons:star" class="whole" data-rating="2"></iron-icon>
-        <iron-icon icon="icons:star" class="half" data-rating="1.5"></iron-icon>
-        <iron-icon icon="icons:star" class="whole" data-rating="1"></iron-icon>
-        <iron-icon icon="icons:star" class="half" data-rating="0.5"></iron-icon>
+        <template is="dom-repeat" items="[[ratings]]">
+            <iron-icon icon="[[icon]]" class$="[[item.class]] [[_getSelected(item.selected)]]" on-tap="_starClicked"></iron-icon>
+        </template>
     </template>
 
     <script>
@@ -67,48 +61,69 @@
         * @polymer
         * @demo demo/index.html
         */
-        class IronStarRating extends Polymer.Element {
+        class IronStarRating extends Polymer.GestureEventListeners(Polymer.Element) {
             static get is() { return 'iron-star-rating'; }
             static get properties() {
                 return {
                     value: {
                         type: Number,
                         notify: true,
-                        value: 'iron-star-rating',
                         observer: '_valueChanged'
+                    },
+                    icon: {
+                        type: String,
+                        value: 'icons:star'
+                    },
+                    disableAutoUpdate: {
+                        type: Boolean,
+                        value: false,
                     }
                 };
             }
 
-            ready() {
-                super.ready();
+            constructor() {
+                super();
 
-                var self = this;
-                var stars = Polymer.dom(this.root).querySelectorAll('iron-icon');
-                stars.forEach(function(star) {
-                    star.addEventListener('click', e => self._starClicked(e));
-                });
+                this.ratings = [
+                    {value: 5, class: 'whole', selected: false},
+                    {value: 4.5, class: 'half', selected: false},
+                    {value: 4, class: 'whole', selected: false},
+                    {value: 3.5, class: 'half', selected: false},
+                    {value: 3, class: 'whole', selected: false},
+                    {value: 2.5, class: 'half', selected: false},
+                    {value: 2, class: 'whole', selected: false},
+                    {value: 1.5, class: 'half', selected: false},
+                    {value: 1, class: 'whole', selected: false},
+                    {value: 0.5, class: 'half', selected: false},
+                ];
             }
 
             _valueChanged(newValue, oldValue) {
                 if (newValue !== 0 && !newValue) {
                     return;
                 }
-                var stars = Polymer.dom(this.root).querySelectorAll('iron-icon');
-                stars.forEach(function(star) {
-                    if (star.dataset.rating === newValue.toString()) {
-                        star.classList.add('active');
+
+                var self = this;
+                this.ratings.forEach(function(rating, index) {
+                    if (rating.value === newValue) {
+                        rating.selected = true;
                     } else {
-                        star.classList.remove('active');
+                        rating.selected = false;
                     }
+                    self.notifyPath('ratings.' + index + '.selected')
                 });
+            }
+            _getSelected(selected) {
+                return selected ? 'selected' : '';
             }
 
             _starClicked(e) {
                 e.preventDefault();
 
-                this.value = e.target.dataset.rating;
-                this.dispatchEvent(new CustomEvent('iron-star-rating-changed', {detail: {rating: this.value}}));
+                if (!this.disableAutoUpdate) {
+                    this.value = e.model.item.value;
+                }
+                this.dispatchEvent(new CustomEvent('rating-selected', {detail: {rating: e.model.item.value}}));
             }
         }
 

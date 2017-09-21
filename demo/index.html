@@ -10,6 +10,7 @@
 
     <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
     <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+    <link rel="import" href="../../iron-icons/iron-icons.html">
     <link rel="import" href="../iron-star-rating.html">
 
     <custom-style>
@@ -19,10 +20,22 @@
   </head>
   <body>
     <div class="vertical-section-container centered">
-      <h3>Basic iron-star-rating demo</h3>
+      <h3>Basic demo</h3>
       <demo-snippet>
         <template>
           <iron-star-rating></iron-star-rating>
+        </template>
+      </demo-snippet>
+      <h3>Pre-assigned rating demo</h3>
+      <demo-snippet>
+        <template>
+          <iron-star-rating value="3"></iron-star-rating>
+        </template>
+      </demo-snippet>
+      <h3>Custom icon demo</h3>
+      <demo-snippet>
+        <template>
+          <iron-star-rating icon="icons:favorite"></iron-star-rating>
         </template>
       </demo-snippet>
     </div>
