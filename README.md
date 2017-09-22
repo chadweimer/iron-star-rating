@@ -1,3 +1,5 @@
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/chadweimer/iron-star-rating)
+
 # \<iron-star-rating\>
 
 5-star rating element (Polymer 2.x)
