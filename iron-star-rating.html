@@ -8,9 +8,11 @@
         <style>
             :host {
                 display: inline-block;
-                cursor: pointer;
                 --iron-icon-width: var(--star-rating-size, 24px);
                 --iron-icon-height: var(--star-rating-size, 24px);
+            }
+            :host(:not([readonly])) {
+                cursor: pointer;
             }
             :host[hidden] {
                 display: none !important;
@@ -41,8 +43,8 @@
             iron-icon.selected ~ iron-icon {
                 color: #fdd835;
             }
-            iron-icon:hover,
-            iron-icon:hover ~ iron-icon {
+            :host(:not([readonly])) iron-icon:hover,
+            :host(:not([readonly])) iron-icon:hover ~ iron-icon {
                 color: #ffeb3b !important;
             }
         </style>
@@ -67,6 +69,7 @@
                 return {
                     value: {
                         type: Number,
+                        value: 0,
                         notify: true,
                         observer: '_valueChanged'
                     },
@@ -77,6 +80,11 @@
                     disableAutoUpdate: {
                         type: Boolean,
                         value: false,
+                    },
+                    readonly: {
+                        type: Boolean,
+                        value: false,
+                        reflectToAttribute: true,
                     }
                 };
             }
@@ -119,6 +127,10 @@
 
             _starClicked(e) {
                 e.preventDefault();
+
+                if (this.readonly) {
+                    return;
+                }
 
                 if (!this.disableAutoUpdate) {
                     this.value = e.model.item.value;
