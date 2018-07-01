@@ -19,9 +19,15 @@
       </template>
     </test-fixture>
 
-    <test-fixture id="ChangedPropertyTestFixture">
+    <test-fixture id="InitialValueTestFixture">
       <template>
-        <iron-star-rating prop1="new-prop1"></iron-star-rating>
+        <iron-star-rating value="3"></iron-star-rating>
+      </template>
+    </test-fixture>
+
+    <test-fixture id="ReadonlyTestFixture">
+      <template>
+        <iron-star-rating readonly></iron-star-rating>
       </template>
     </test-fixture>
 
@@ -30,19 +36,18 @@
 
         test('instantiating the element with default properties works', function() {
           var element = fixture('BasicTestFixture');
-          assert.equal(element.prop1, 'iron-star-rating');
-          var elementShadowRoot = element.shadowRoot;
-          var elementHeader = elementShadowRoot.querySelector('h2');
-          assert.equal(elementHeader.innerHTML, 'Hello iron-star-rating!');
+          assert.equal(element.value, 0);
+          assert.equal(element.readonly, false);
         });
 
-        test('setting a property on the element works', function() {
-          // Create a test fixture
-          var element = fixture('ChangedPropertyTestFixture');
-          assert.equal(element.prop1, 'new-prop1');
-          var elementShadowRoot = element.shadowRoot;
-          var elementHeader = elementShadowRoot.querySelector('h2');
-          assert.equal(elementHeader.innerHTML, 'Hello new-prop1!');
+        test('setting a value on the element works', function() {
+          var element = fixture('InitialValueTestFixture');
+          assert.equal(element.value, 3);
+        });
+
+        test('setting readonly on the element works', function() {
+          var element = fixture('ReadonlyTestFixture');
+          assert.equal(element.readonly, true);
         });
 
       });
