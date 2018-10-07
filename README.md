@@ -8,7 +8,7 @@
 ```
 <custom-element-demo>
   <template>
-    <script type="module" src="iron-star-rating.js">
+    <script type="module" src="iron-star-rating.js"></script>
     <next-code-block></next-code-block>
   </template>
 </custom-element-demo>
