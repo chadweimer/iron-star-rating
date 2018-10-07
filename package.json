@@ -2,6 +2,8 @@
   "description": "5-star rating element (Polymer 3.x)",
   "name": "@cwmr/iron-star-rating",
   "version": "3.0.0",
+  "repository": "github:chadweimer/iron-star-rating",
+  "homepage": "https://github.com/chadweimer/iron-star-rating#readme",
   "resolutions": {
     "inherits": "2.0.3",
     "samsam": "1.1.3",
