@@ -6,10 +6,10 @@
 
     <title>iron-star-rating test</title>
 
-    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
-    <script src="../../web-component-tester/browser.js"></script>
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/wct-browser-legacy/browser.js"></script>
 
-    <link rel="import" href="../iron-star-rating.html">
+    <script type="module" src="../iron-star-rating.js"></script>
   </head>
   <body>
 
@@ -31,21 +31,21 @@
       </template>
     </test-fixture>
 
-    <script>
-      suite('iron-star-rating', function() {
+    <script type="module">
+      suite('iron-star-rating', () => {
 
-        test('instantiating the element with default properties works', function() {
+        test('instantiating the element with default properties works', () => {
           var element = fixture('BasicTestFixture');
           assert.equal(element.value, 0);
           assert.equal(element.readonly, false);
         });
 
-        test('setting a value on the element works', function() {
+        test('setting a value on the element works', () => {
           var element = fixture('InitialValueTestFixture');
           assert.equal(element.value, 3);
         });
 
-        test('setting readonly on the element works', function() {
+        test('setting readonly on the element works', () => {
           var element = fixture('ReadonlyTestFixture');
           assert.equal(element.readonly, true);
         });

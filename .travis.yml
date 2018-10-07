@@ -1,0 +1,22 @@
+dist: trusty
+sudo: false
+language: node_js
+node_js:
+- node
+addons:
+  firefox: latest-esr
+cache:
+  directories:
+  - node_modules
+before_script:
+- npm install polymer-cli
+- "$(npm bin)/polymer lint"
+script: xvfb-run $(npm bin)/polymer test --module-resolution=node --npm -l firefox
+deploy:
+  provider: npm
+  email: npm@dweimer.com
+  api_key:
+    secure: V+zdxrtFWHLUHHFzIK9LKPwLHW2YRT9IPw5Dt2rH9aIIGEaO+ud0/Qwz/xsvHiaQc0zINuk5lMxbziVYhTrWe2QykPwK8M72+Ky/ju3xjnvonOGpVP92kZSRauIR7ObexeyiwsRx4F5kUlF90sGanSqs+CWUn8Ap5/dHAik6gSFtQP4hKbxtQWkfBhnPzM75118JGEqU/cq0WfLUy4W4nzKGAKNCM+8XMSwGLvz/lQsjaSRnc+84stDP5Td5fEbXvOS3UrJ+xWWbutIokqDAGiqJt0T50/1aK9P7Lk5XSuuJSHRalxsj9EepiR8zQUC+ed2po4X1UV/FxKTiWYPQBcWOsC525nhhGkm1vb4sEcXP115nz+hCzhHrnX7mfcNVwwOV/Q88lcpF4pY+z93aS9QIWrAELOURMacgJnmWEirhuuhB7xJBxD34JYbUE4HVjf0Uy1c/KaytlIEOhGE8xQzf3wRK6WSvsBiIjk8lfBw/rVn4QczXa5m4F8NHQ/B4VV8rNldz5lWquxvb/sOCocewScW0t/+yvAE5VhU41tYJq9XCEeDPAa87fnsVgNykzo5Jyd6Q3wM33gy579z44i2sRaK4+F8T7cvsTtPik2hQrakf3jl9w8T16sanqQXOwFZuTyd0DTcaxk5Ztm9C/2h1OhhKV3+4BIOfgC5lDog=
+  on:
+    tags: true
+    repo: chadweimer/iron-star-rating

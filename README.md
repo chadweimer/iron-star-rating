@@ -2,7 +2,7 @@
 
 # \<iron-star-rating\>
 
-5-star rating element (Polymer 2.x)
+5-star rating element (Polymer 3.x)
 
 <!--
 ```
