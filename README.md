@@ -1,4 +1,4 @@
-[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/chadweimer/iron-star-rating)
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/@cwmr/iron-star-rating)
 
 # \<iron-star-rating\>
 
@@ -8,7 +8,7 @@
 ```
 <custom-element-demo>
   <template>
-    <link rel="import" href="iron-star-rating.html">
+    <script type="module" src="iron-star-rating.js"></script>
     <next-code-block></next-code-block>
   </template>
 </custom-element-demo>
