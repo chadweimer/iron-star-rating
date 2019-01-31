@@ -1,7 +1,7 @@
 {
   "description": "5-star rating element (Polymer 3.x)",
   "name": "@cwmr/iron-star-rating",
-  "version": "3.0.1",
+  "version": "3.1.0",
   "repository": "github:chadweimer/iron-star-rating",
   "homepage": "https://github.com/chadweimer/iron-star-rating#readme",
   "license": "MIT",
