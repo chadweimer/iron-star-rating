@@ -15,7 +15,8 @@
   "scripts": {
     "generate-types": "gen-typescript-declarations --deleteExisting --outDir . --verify",
     "lint": "polymer lint",
-    "test": "polymer test"
+    "test": "polymer test",
+    "prepare": "npm run generate-types"
   },
   "dependencies": {
     "@polymer/polymer": "^3.0.0",
