@@ -12,6 +12,7 @@
     "type-detect": "1.0.0"
   },
   "main": "iron-star-rating.js",
+  "types": "iron-star-rating.d.ts",
   "scripts": {
     "generate-types": "gen-typescript-declarations --deleteExisting --outDir . --verify",
     "lint": "polymer lint",
