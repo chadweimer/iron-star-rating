@@ -1,5 +1,4 @@
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
-import { GestureEventListeners } from '@polymer/polymer/lib/mixins/gesture-event-listeners.js';
 import '@polymer/iron-icon/iron-icon.js';
 import '@polymer/iron-icons/iron-icons.js';
 /**
@@ -10,7 +9,7 @@ import '@polymer/iron-icons/iron-icons.js';
 * @polymer
 * @demo demo/index.html
 */
-class IronStarRating extends GestureEventListeners(PolymerElement) {
+class IronStarRating extends PolymerElement {
   static get template() {
     return html`
         <style>
@@ -58,7 +57,7 @@ class IronStarRating extends GestureEventListeners(PolymerElement) {
         </style>
     
         <template is="dom-repeat" items="[[ratings]]">
-            <iron-icon icon="[[icon]]" class\$="[[item.class]] [[_getSelected(item.selected)]]" on-tap="_starClicked"></iron-icon>
+            <iron-icon icon="[[icon]]" class\$="[[item.class]] [[_getSelected(item.selected)]]" on-click="_starClicked"></iron-icon>
         </template>
 `;
   }
