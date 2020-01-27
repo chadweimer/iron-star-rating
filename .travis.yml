@@ -1,19 +1,16 @@
-dist: trusty
-sudo: false
 language: node_js
 node_js:
-- node
+  - node
 addons:
   firefox: latest
-  chrome: stable
-cache:
-  directories:
-  - node_modules
+env:
+  global:
+    - MOZ_HEADLESS=1
 before_script:
-- npm run lint
-script: xvfb-run npm run test -- -l firefox,chrome
+  - npm run lint
+script: npm run test -- -l firefox
 before_deploy:
-- npm run generate-types
+  - npm run generate-types
 deploy:
   provider: npm
   email: npm@dweimer.com
