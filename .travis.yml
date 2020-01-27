@@ -1,16 +1,17 @@
 language: node_js
 node_js:
   - node
+addons:
+  firefox: latest
+  chrome: stable
 env:
   global:
     - MOZ_HEADLESS=1
-addons:
-  firefox: latest
-  #chrome: stable
+before_install:
+  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
 before_script:
   - npm run lint
-script: npm run test -- -l firefox
-#,chrome
+script: npm run test -- -l firefox,chrome
 before_deploy:
   - npm run generate-types
 deploy:
