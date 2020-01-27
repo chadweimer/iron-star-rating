@@ -8,7 +8,7 @@ env:
   global:
     - MOZ_HEADLESS=1
 before_install:
-  - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
+  - google-chrome --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
 before_script:
   - npm run lint
 script: npm run test -- -l firefox,chrome
