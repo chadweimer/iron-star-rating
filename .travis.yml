@@ -1,14 +1,16 @@
 language: node_js
 node_js:
   - node
-services:
-  - xvfb
+env:
+  global:
+    - MOZ_HEADLESS=1
 addons:
   firefox: latest
-  chrome: stable
+  #chrome: stable
 before_script:
   - npm run lint
-script: xvfb-run npm run test -- -l firefox,chrome
+script: npm run test -- -l firefox
+#,chrome
 before_deploy:
   - npm run generate-types
 deploy:
