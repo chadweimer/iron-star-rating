@@ -9,13 +9,10 @@ env:
 before_script:
 - npm run lint
 script: npm run test -- -l firefox
-before_deploy:
-- npm run generate-types
 deploy:
   provider: npm
   email: npm@dweimer.com
-  api_key:
-    secure: Odk4V+hQOGAFVWTxRyjFDrKO9N0Vc8hlXySFsX9e4rv1+jc3obIw+558Q079YwN2ekVeYG+mRu8fLKYBbFpWak08nrx5W8zPI/3dysD8VNFTmndguqZnN/yne0Har6QFXU35HRnQd9mquNkqcuwAd7piAgjvtCXJRIUmDfIxHlCJc/yRTVoBaz6mY5YtHCJv/ln3P8j545ie9kI+0VtmZGKecSSijOLfMpfW6swG3GkYBwH/3q1qG0tOAcaLPaqo6FMesCIh0EroCXzY1rNVqtcg5V+oqas/TtTtlIAJgud9mHJtHhoG2OTVIYY+NdiTOUdyVuhMHqPMXCXMK9XWlcLA5Cbt01voO6eLKh31KS0INW9kKFKcuJGmPYv432i1B4eeZvBOVqcQVybtygPR85MsBpKtmqZsRR4P6D2Gj9H3k1TKRkLrNRefmTBlByhPTCrRNQR5EhOsdXJK4+F48HO2w85CuM2jcMgdKNoQTRZ3yoh37/LIKG9cJ77RGwVVuH6knlNjLfB/3o0TB73kvNz5jDJ2fUucTi6dWXAAUKD8H6vbHBN/lIaAnVD4f6fLUHYc57SQ1hBAVeOjS3X7zNOPF9AmhvnTg56JXMf6csweFyKkqSFICXKZDN2VrUQFgqH+OCjN5NJzMt6R3L1AzTki5tGL6plv6/lNz+SYdBg=
+  api_key: "$NPM_TOKEN"
   on:
     tags: true
     repo: chadweimer/iron-star-rating
