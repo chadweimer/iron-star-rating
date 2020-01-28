@@ -1,21 +1,21 @@
 language: node_js
 node_js:
-  - node
+- node
 addons:
   firefox: latest
 env:
   global:
-    - MOZ_HEADLESS=1
+  - MOZ_HEADLESS=1
 before_script:
-  - npm run lint
+- npm run lint
 script: npm run test -- -l firefox
 before_deploy:
-  - npm run generate-types
+- npm run generate-types
 deploy:
   provider: npm
   email: npm@dweimer.com
   api_key:
-    secure: vtoy0HP21TNqb5EDk3VNjfa4IJvxvK+R9h2w0T3B8KmNjEysuieWSlzai3SotjerxudaefjwqdO+KqQKQFQD8Zx3ZP/ooj0BTJtVK2UurijxY1JnQwCPAEedrQVJTkC9jGsQz9RjwO5H7Cz1SPuK72+LZuY1jnFdekTz6c9BDsS/QXCJn69vxck+700YbXqgZiEKEcqpxTOFxQV3t+JxYNNs/+HqSxIyk/mdQpLs98rnypfWIWr2woq4crhbz2OGIQPwZu3QGLK+C5e5cEan6BN8A2vq+T8engYwe9XziDnDjGv+iA7EsHJQ2Cbo2vEkyri5xNji1CO3RQb88BFv4sZLBXMhAWwsFSPx1WWWcXu2rAvGhgL8C5KDJW9FnawikwleN36yk22XobNir3N1Ug5BC75gXAzJ2d3dziQ9pUZ1puqUd8ATVMOLnMqMH/WoKkNv4HRMFErOpBdyH/hV8k0l5DjQM1Rt6FDCKv92eWoxXZm0wrKVMtbtiUYxVe/zdVidQRXY24CcJ0oaof7G4s+DqVR59GN3TEs4HdbMdubbUbqMkfP22BGmN5sROepxIKkeXepi4D6U2yK0MaTfAzU+3/uepxNCcA/5/3OsHHzeiZ+PDy48si0lGWg90J0dTLBi1tWhBE9bP78HtwR1WUE5yyy6CM6EA1Y+pGn23ig=
+    secure: Odk4V+hQOGAFVWTxRyjFDrKO9N0Vc8hlXySFsX9e4rv1+jc3obIw+558Q079YwN2ekVeYG+mRu8fLKYBbFpWak08nrx5W8zPI/3dysD8VNFTmndguqZnN/yne0Har6QFXU35HRnQd9mquNkqcuwAd7piAgjvtCXJRIUmDfIxHlCJc/yRTVoBaz6mY5YtHCJv/ln3P8j545ie9kI+0VtmZGKecSSijOLfMpfW6swG3GkYBwH/3q1qG0tOAcaLPaqo6FMesCIh0EroCXzY1rNVqtcg5V+oqas/TtTtlIAJgud9mHJtHhoG2OTVIYY+NdiTOUdyVuhMHqPMXCXMK9XWlcLA5Cbt01voO6eLKh31KS0INW9kKFKcuJGmPYv432i1B4eeZvBOVqcQVybtygPR85MsBpKtmqZsRR4P6D2Gj9H3k1TKRkLrNRefmTBlByhPTCrRNQR5EhOsdXJK4+F48HO2w85CuM2jcMgdKNoQTRZ3yoh37/LIKG9cJ77RGwVVuH6knlNjLfB/3o0TB73kvNz5jDJ2fUucTi6dWXAAUKD8H6vbHBN/lIaAnVD4f6fLUHYc57SQ1hBAVeOjS3X7zNOPF9AmhvnTg56JXMf6csweFyKkqSFICXKZDN2VrUQFgqH+OCjN5NJzMt6R3L1AzTki5tGL6plv6/lNz+SYdBg=
   on:
     tags: true
     repo: chadweimer/iron-star-rating
