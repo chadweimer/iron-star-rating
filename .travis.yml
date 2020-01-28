@@ -19,3 +19,4 @@ deploy:
   on:
     tags: true
     repo: chadweimer/iron-star-rating
+  edge: true
