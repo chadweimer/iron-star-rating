@@ -9,7 +9,7 @@ import '@polymer/iron-icons/iron-icons.js';
 * @polymer
 * @demo demo/index.html
 */
-class IronStarRating extends PolymerElement {
+export class IronStarRating extends PolymerElement {
   static get template() {
     return html`
         <style>
