@@ -4,6 +4,8 @@
 
 5-star rating element (Polymer 3.x)
 
+:exclamation: This element is no longer maintained. Use <https://github.com/chadweimer/mwc-star-rating>.
+
 <!--
 ```
 <custom-element-demo>
